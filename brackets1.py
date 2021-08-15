@@ -10,9 +10,9 @@ spikethck=2.35 # mm at a distance of about 3mm from rim. th varies
 spikeangle=45  # deg, approx visually -- from the rim
 
 # our params for the bracket
-topthck=1.5  # mm thickness on top
-inthck=2
-outthck=1.5
+topthck=1.2  # mm thickness on top
+inthck=1.5
+outthck=1.
 # lip?
 
 import cadquery as cq
@@ -70,12 +70,17 @@ rcut2 = rcut.faces('>Z').workplane()\
     .transformed(offset=cq.Vector(0, 0, 0), rotate=cq.Vector(90, 0, 0))\
     .split(keepBottom=True)
 del r, rcut
-# and for trial -- 8th
-rcut3 = rcut2.faces('>Z').workplane()\
+
+if False:
+  # and for trial -- 16th
+  rcut3 = rcut2.faces('>Z').workplane()\
     .transformed(offset=cq.Vector(0, 0, 0), rotate=cq.Vector(0, 90, 0))\
-    .transformed(offset=cq.Vector(0, 0, 0), rotate=cq.Vector(45, 0, 0))\
+    .transformed(offset=cq.Vector(0, 0, 0), rotate=cq.Vector(45 # 8th
+                                                             + 45/2 # 16th
+                                                             , 0, 0))\
     .split(keepTop=True)
-del rcut2
+  del rcut2
+
 # now we need to make cut outs for the spike/fins
 
 #    .circle(outdia - rimthck)\
