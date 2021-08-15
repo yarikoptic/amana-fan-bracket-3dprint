@@ -28,7 +28,7 @@ rin = cq.Workplane('front')\
 
 # cut outs for spikes/fins
 rfincut = cq.Workplane('front')\
-    .rect(inthck*4, spikethck*1.1)\
+    .rect(inthck*4, spikethck*1.2)\
     .extrude(rimheight)\
     .translate((0, 0, topthck))
 
@@ -52,8 +52,30 @@ r = rtop.union(rout).union(rin)
 
 del rfincut1
 del rfincut
+del rout
+del rin
+del rtop
+
 #r = rfincut # .union(rfincut)
 
+# split!
+
+# TEMP-- to get one short to try -- well -- 4th part
+rcut = r.faces('>Z').workplane()\
+    .transformed(offset=cq.Vector(0, 0, 0), rotate=cq.Vector(0, 90, 0))\
+    .split(keepTop=True, keepBottom=False)
+# that would be for the quarter!
+rcut2 = rcut.faces('>Z').workplane()\
+    .transformed(offset=cq.Vector(0, 0, 0), rotate=cq.Vector(0, 90, 0))\
+    .transformed(offset=cq.Vector(0, 0, 0), rotate=cq.Vector(90, 0, 0))\
+    .split(keepBottom=True)
+del r, rcut
+# and for trial -- 8th
+rcut3 = rcut2.faces('>Z').workplane()\
+    .transformed(offset=cq.Vector(0, 0, 0), rotate=cq.Vector(0, 90, 0))\
+    .transformed(offset=cq.Vector(0, 0, 0), rotate=cq.Vector(45, 0, 0))\
+    .split(keepTop=True)
+del rcut2
 # now we need to make cut outs for the spike/fins
 
 #    .circle(outdia - rimthck)\
