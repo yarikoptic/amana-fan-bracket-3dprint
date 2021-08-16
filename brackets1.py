@@ -58,28 +58,29 @@ del rtop
 
 #r = rfincut # .union(rfincut)
 
-# split!
-
-# TEMP-- to get one short to try -- well -- 4th part
-rcut = r.faces('>Z').workplane()\
-    .transformed(offset=cq.Vector(0, 0, 0), rotate=cq.Vector(0, 90, 0))\
-    .split(keepTop=True, keepBottom=False)
-# that would be for the quarter!
-rcut2 = rcut.faces('>Z').workplane()\
-    .transformed(offset=cq.Vector(0, 0, 0), rotate=cq.Vector(0, 90, 0))\
-    .transformed(offset=cq.Vector(0, 0, 0), rotate=cq.Vector(90, 0, 0))\
-    .split(keepBottom=True)
-del r, rcut
-
 if False:
-  # and for trial -- 16th
-  rcut3 = rcut2.faces('>Z').workplane()\
-    .transformed(offset=cq.Vector(0, 0, 0), rotate=cq.Vector(0, 90, 0))\
-    .transformed(offset=cq.Vector(0, 0, 0), rotate=cq.Vector(45 # 8th
-                                                             + 45/2 # 16th
-                                                             , 0, 0))\
-    .split(keepTop=True)
-  del rcut2
+    # split!
+    
+    # TEMP-- to get one short to try -- well -- 4th part
+    rcut = r.faces('>Z').workplane()\
+        .transformed(offset=cq.Vector(0, 0, 0), rotate=cq.Vector(0, 90, 0))\
+        .split(keepTop=True, keepBottom=False)
+    # that would be for the quarter!
+    rcut2 = rcut.faces('>Z').workplane()\
+        .transformed(offset=cq.Vector(0, 0, 0), rotate=cq.Vector(0, 90, 0))\
+        .transformed(offset=cq.Vector(0, 0, 0), rotate=cq.Vector(90, 0, 0))\
+        .split(keepBottom=True)
+    del r, rcut
+    
+    if False:
+      # and for trial -- 16th
+      rcut3 = rcut2.faces('>Z').workplane()\
+        .transformed(offset=cq.Vector(0, 0, 0), rotate=cq.Vector(0, 90, 0))\
+        .transformed(offset=cq.Vector(0, 0, 0), rotate=cq.Vector(45 # 8th
+                                                                 + 45/2 # 16th
+                                                                 , 0, 0))\
+        .split(keepTop=True)
+      del rcut2
 
 # now we need to make cut outs for the spike/fins
 
