@@ -7,7 +7,7 @@ It tried to eat its way out and just lacked good management skills to stay on ta
 it ate lots of pieces here and there instead of one hole to escape.
 As a result, wheel lost its integrity on the outer rim:
 
-![orig](imgs/20210522_161542.jpg)
+![orig](./imgs/20210522_161542.jpg)
 
 ## AC Detail
 
@@ -20,7 +20,7 @@ I used an awesome [cadquery](https://cadquery.readthedocs.io/) to create a quick
 I had to print a quarter and then the rest which did fit on the printing plate of my Prusa, trim both to match target size, and super glued together after ensuring a good tight fit (I did even stand on the thing for a good "pressing" - it held ;-) ).
 Result:
 
-![result](imgs/20210815_203108.jpg)
+![result](./imgs/20210815_203108.jpg)
 
 You can see those eaten out locations braced on:
 
